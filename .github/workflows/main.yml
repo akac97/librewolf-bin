@@ -12,6 +12,8 @@ jobs:
     container:
       image: ghcr.io/akac97/archlinux-builder:main
     steps:
+      - name: whoami
+        run: whoami
       - name: enable multi-core
         run: sudo echo "MAKEFLAGS=\"-j$(nproc)\"" >> /etc/makepkg.conf
       - name: install deps
