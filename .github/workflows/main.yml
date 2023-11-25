@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/akac97/archlinux-builder:main
+      options: "--privileged"
     steps:
       - name: whoami
         run: whoami
