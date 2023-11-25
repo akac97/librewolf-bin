@@ -12,5 +12,13 @@ jobs:
     container:
       image: ghcr.io/akac97/archlinux-builder:main
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: enable multi-core
+        run: sudo echo "MAKEFLAGS=\"-j$(nproc)\"" >> /etc/makepkg.conf
+      - name: install deps
+        run: sudo pacman -S git git-lfs --noconfirm
+      - name: git clone
+        run: git clone https://aur.archlinux.org/librewolf.git
+      - name: cd
+        run: cd librewolf
+      - name: makpkg
+        run: makepkg --syncdeps --noconfirm
