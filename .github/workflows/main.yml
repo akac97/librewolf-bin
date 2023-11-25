@@ -16,7 +16,7 @@ jobs:
       - name: whoami
         run: whoami
       - name: enable multi-core compilation
-        run: sudo echo "MAKEFLAGS=\"-j$(nproc)\"" >> /etc/makepkg.conf
+        run: sudo sh -c 'echo "MAKEFLAGS=\"-j$(nproc)\"" >> /etc/makepkg.conf'
       - name: install deps
         run: sudo pacman -S git git-lfs --noconfirm
       - name: git clone
@@ -25,3 +25,5 @@ jobs:
         run: cd librewolf
       - name: makpkg
         run: makepkg --syncdeps --noconfirm
+      - name: ls
+        run: ls
