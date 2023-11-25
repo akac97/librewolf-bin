@@ -1,0 +1,16 @@
+name: aur builder
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  container-test-job:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/akac97/archlinux-builder:main
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
