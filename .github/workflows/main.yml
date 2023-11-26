@@ -18,9 +18,15 @@ jobs:
         run: sudo sh -c 'echo "MAKEFLAGS=\"-j$(nproc)\"" >> /etc/makepkg.conf'
       - name: install deps
         run: sudo pacman -S git git-lfs --noconfirm
+      - name: deps
+        run: sudo sudo pacman -S gtk3 hicolor-icon-theme libgl libvpx>=1.13 libwebp openal sdl2 zmusic>=1.1.8 blasphemer-wad chexquest3-wad doom1-wad freedm freedoom gxmessage hacx-wad harmony-wad heretic1-wad hexen1-wad kdialog strife0-wad square1-wad urbanbrawl-wad xorg-xmessage vulkan-driver vulkan-icd-loader --noconfirm
       - name: build
         run: |
              cd /home/builder
+             git clone https://aur.archlinux.org/zmusic.git
+             cd zmusic
+             makepkg -si --noconfirm
+             ls
              git clone https://aur.archlinux.org/gzdoom.git
              cd gzdoom
              makepkg --syncdeps --noconfirm
