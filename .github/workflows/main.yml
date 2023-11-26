@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/akac97/archlinux-builder:main
-      options: "--privileged"
     steps:
       - name: whoami
         run: whoami
@@ -22,7 +21,7 @@ jobs:
       - name: build
         run: |
              cd /home/builder
-             git clone https://aur.archlinux.org/linux-libre.git
-             cd linux-libre
+             git clone https://aur.archlinux.org/gzdoom.git
+             cd gzdoom
              makepkg --syncdeps --noconfirm
              ls
