@@ -19,7 +19,8 @@ jobs:
       - name: install deps
         run: sudo pacman -S git git-lfs --noconfirm
       - name: mkdir chown
-        run: sudo mkdir /github/home/.cache
+        run: |
+             sudo mkdir -p /github/home/.cache
              sudo chown -R builder /github/home/.cache
       - name: build
         run: |
