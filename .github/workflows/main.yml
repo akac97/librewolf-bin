@@ -26,6 +26,6 @@ jobs:
         run: |
              cd /home/builder
              git clone https://aur.archlinux.org/librewolf.git
-             cd yay
+             cd librewolf
              makepkg --syncdeps --noconfirm
              ls
